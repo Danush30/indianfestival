@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Festivals in India</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: Arial, sans-serif;
+			}
+			body {
+				background: linear-gradient(135deg, white, bisque);
+				color: #030000;
+			}
+			header {
+				background: linear-gradient(135deg, orangered, #891fec);
+				color: white;
+				text-align: center;
+				padding: 45px 20px;
+				box-shadow: 0 5px 15px rgba(12, 10, 10, 0.2);
+			}
+			header h1 {
+				font-size: 42px;
+				margin-bottom: 10px;
+			}
+			header h3 {
+				font-size: 20px;
+				font-weight: normal;
+			}
+			.festival-buttons {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+				gap: 18px;
+				padding: 30px 20px;
+				width: 90%;
+				max-width: 1100px;
+				margin: auto;
+			}
+			.festival-buttons button {
+				padding: 14px 22px;
+				border: none;
+				border-radius: 25px;
+				background-color: white;
+				color: #000;
+				font-size: 16px;
+				font-weight: bold;
+				cursor: pointer;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+				transition: 0.3s ease;
+			}
+			.festival-buttons button:hover {
+				background-color: #b33deafe;
+				color: white;
+				transform: translateY(-5px);
+				box-shadow: 0 8px 20px rgba(17, 2, 2, 0.2);
+			}
+			.festival-container {
+				width: 90%;
+				max-width: 1100px;
+				margin: auto;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 25px;
+				padding-bottom: 50px;
+			}
+			.fest {
+				background-color: white;
+				padding: 25px;
+				border-radius: 18px;
+				box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+				border-left: 6px solid rgb(222, 45, 254);
+				transition: 0.3s ease;
+				scroll-margin-top: 20px;
+				animation: fadeIn 0.5s ease;
+			}
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			.fest:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 12px 25px rgba(9, 9, 9, 0.18);
+			}
+			.fest h2 {
+				color: orangered;
+				margin-bottom: 15px;
+				font-size: 25px;
+				text-align: center;
+			}
+
+			/* IMAGE PADDING - ATTACHED */
+			.fest img {
+				width: 100%;
+				height: 210px;
+				object-fit: cover;
+				object-position: center;
+				border-radius: 15px;
+				margin-bottom: 15px;
+				border: 1px solid #f3e8ff;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+				display: block;
+			}
+
+			.fest p {
+				line-height: 1.7;
+				margin-bottom: 10px;
+			}
+			.fest strong {
+				color: #e65100;
+			}
+			.religions,
+			.states {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin: 8px 0 12px;
+			}
+			.religion {
+				background: linear-gradient(135deg, #f59e0b, #f97316);
+				color: #fff;
+				padding: 6px 12px;
+				border-radius: 20px;
+				font-size: 13px;
+				font-weight: bold;
+			}
+			.state {
+				background: rgba(59, 130, 246, 0.15);
+				color: #1e40af;
+				padding: 6px 10px;
+				border-radius: 12px;
+				font-size: 13px;
+				border: 1px solid rgba(147, 197, 253, 0.5);
+			}
+			.stat-box {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 10px;
+				margin-top: 10px;
+			}
+			.stat {
+				background: #fff7ed;
+				padding: 10px;
+				border-radius: 10px;
+				text-align: center;
+				border: 1px solid #ffedd5;
+			}
+			.stat strong {
+				display: block;
+				color: #f97316;
+				font-size: 18px;
+			}
+			footer {
+				background-color: #333;
+				color: white;
+				text-align: center;
+				padding: 20px;
+				margin-top: 20px;
+			}
+			@media (max-width: 600px) {
+				header h1 {
+					font-size: 30px;
+				}
+				.festival-buttons {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.fest img {
+					height: 170px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1><i>Festivals in India</i></h1>
+			<h3><i>Discover India's Greatest Festivals - Upgraded</i></h3>
+		</header>
+
+		<div class="festival-buttons">
+			<button onclick="showfestival('diwali')">🪔 Diwali</button>
+			<button onclick="showfestival('dussehra')">🏹 Dussehra</button>
+			<button onclick="showfestival('pongal')">🌾 Pongal</button>
+			<button onclick="showfestival('ugadi')">🌿 Ugadi</button>
+			<button onclick="showfestival('ganesh')">
+				🐘 Ganesh Chaturthi
+			</button>
+			<button onclick="showfestival('holi')">🌈 Holi</button>
+			<button onclick="showfestival('christmas')">🎄 Christmas</button>
+			<button onclick="showfestival('eid')">🌙 Eid</button>
+			<button onclick="showfestival('ramadan')">🌙 Ramadan</button>
+			<button onclick="showfestival('onam')">🌸 Onam</button>
+		</div>
+
+		<div class="festival-container">
+			<div class="fest" id="diwali">
+				<img src="Diwali.jpg" alt="Diwali" />
+				<h2>🪔 Diwali</h2>
+				<p>
+					<strong>About:</strong> Festival of Lights, victory of light
+					over darkness.
+				</p>
+				<div class="religions">
+					<span class="religion">Hinduism</span
+					><span class="religion">Jainism</span
+					><span class="religion">Sikhism</span>
+				</div>
+				<div class="states">
+					<span class="state">AP</span
+					><span class="state">Telangana</span
+					><span class="state">UP</span
+					><span class="state">Maharashtra</span
+					><span class="state">Gujarat</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>20+</strong>States</div>
+					<div class="stat"><strong>5 Days</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p>
+					<strong>Special:</strong> Lighting diyas, rangoli, sweets,
+					Lakshmi Puja.
+				</p>
+			</div>
+			<div class="fest" id="dussehra">
+				<img src="Dussehra.jpg" alt="Dussehra" />
+				<h2>🏹 Dussehra</h2>
+				<p>
+					<strong>About:</strong> Victory of good over evil, Lord
+					Rama's victory over Ravana.
+				</p>
+				<div class="religions">
+					<span class="religion">Hinduism</span>
+				</div>
+				<div class="states">
+					<span class="state">AP</span
+					><span class="state">Karnataka</span
+					><span class="state">WB</span
+					><span class="state">Delhi</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>20+</strong>States</div>
+					<div class="stat"><strong>10 Days</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p>
+					<strong>Tradition:</strong> Ramlila, burning Ravana
+					effigies.
+				</p>
+			</div>
+			<div class="fest" id="pongal">
+				<img src="Pongal.jpg" alt="Pongal" />
+				<h2>🌾 Pongal</h2>
+				<p>
+					<strong>About:</strong> Harvest festival thanking nature,
+					Sun and farmers.
+				</p>
+				<div class="religions">
+					<span class="religion">Tamil Culture</span>
+				</div>
+				<div class="states">
+					<span class="state">Tamil Nadu</span
+					><span class="state">Kerala</span
+					><span class="state">Karnataka</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>4</strong>States</div>
+					<div class="stat"><strong>4 Days</strong>Duration</div>
+					<div class="stat"><strong>Harvest</strong>Type</div>
+				</div>
+				<p>
+					<strong>Special:</strong> Bhogi, Thai Pongal, Mattu Pongal,
+					Kaanum Pongal.
+				</p>
+			</div>
+			<div class="fest" id="ugadi">
+				<img src="Ugaadi.jpg" alt="Ugaadi" />
+				<h2>🌿 Ugadi</h2>
+				<p>
+					<strong>About:</strong> Telugu & Kannada New Year, new
+					beginnings.
+				</p>
+				<div class="religions">
+					<span class="religion">Hinduism</span>
+				</div>
+				<div class="states">
+					<span class="state">AP</span
+					><span class="state">Telangana</span
+					><span class="state">Karnataka</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>4+</strong>States</div>
+					<div class="stat"><strong>1 Day</strong>Duration</div>
+					<div class="stat"><strong>New Year</strong>Type</div>
+				</div>
+				<p>
+					<strong>Special:</strong> Ugadi Pachadi with 6 tastes of
+					life.
+				</p>
+			</div>
+			<div class="fest" id="ganesh">
+				<img src="Ganesh.jpg" alt="Ganesh" />
+				<h2>🐘 Ganesh Chaturthi</h2>
+				<p>
+					<strong>About:</strong> Celebrates Lord Ganesha, wisdom &
+					prosperity.
+				</p>
+				<div class="religions">
+					<span class="religion">Hinduism</span>
+				</div>
+				<div class="states">
+					<span class="state">Maharashtra</span
+					><span class="state">Goa</span
+					><span class="state">Karnataka</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>10+</strong>States</div>
+					<div class="stat"><strong>10 Days</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p><strong>Tradition:</strong> Idol immersion on last day.</p>
+			</div>
+			<div class="fest" id="holi">
+				<img src="Holi.jpg" alt="Holi" />
+				<h2>🌈 Holi</h2>
+				<p>
+					<strong>About:</strong> Festival of colors, arrival of
+					spring.
+				</p>
+				<div class="religions">
+					<span class="religion">Hinduism</span>
+				</div>
+				<div class="states">
+					<span class="state">UP</span
+					><span class="state">Rajasthan</span
+					><span class="state">Punjab</span
+					><span class="state">Bihar</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>15+</strong>States</div>
+					<div class="stat"><strong>2 Days</strong>Duration</div>
+					<div class="stat"><strong>Cultural</strong>Type</div>
+				</div>
+				<p>
+					<strong>Tradition:</strong> Holika Dahan bonfire + playing
+					colors.
+				</p>
+			</div>
+			<div class="fest" id="christmas">
+				<img src="Christmas.jpg" alt="Christmas" />
+				<h2>🎄 Christmas</h2>
+				<p><strong>About:</strong> Birth of Jesus Christ.</p>
+				<div class="religions">
+					<span class="religion">Christianity</span>
+				</div>
+				<div class="states">
+					<span class="state">Goa</span
+					><span class="state">Kerala</span
+					><span class="state">Nagaland</span
+					><span class="state">Mizoram</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>All India</strong>States</div>
+					<div class="stat"><strong>1 Day</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p>
+					<strong>Meaning:</strong> Love, peace, joy and togetherness.
+				</p>
+			</div>
+			<div class="fest" id="eid">
+				<img src="Eid.jpg" alt="Eid" />
+				<h2>🌙 Eid</h2>
+				<p>
+					<strong>About:</strong> Important festival for Muslim
+					community, Eid al-Fitr & Eid al-Adha.
+				</p>
+				<div class="religions"><span class="religion">Islam</span></div>
+				<div class="states">
+					<span class="state">J&K</span><span class="state">UP</span
+					><span class="state">Kerala</span
+					><span class="state">WB</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>All India</strong>States</div>
+					<div class="stat"><strong>2 Days</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p>
+					<strong>Celebrations:</strong> Prayers, charity, new
+					clothes, family gatherings.
+				</p>
+			</div>
+			<div class="fest" id="ramadan">
+				<img src="Ramadan.jpg" alt="Ramadan" />
+				<h2>🌙 Ramadan</h2>
+				<p>
+					<strong>About:</strong> Sacred month of fasting, prayer and
+					charity.
+				</p>
+				<div class="religions"><span class="religion">Islam</span></div>
+				<div class="states">
+					<span class="state">Pan India</span
+					><span class="state">Hyderabad</span
+					><span class="state">Lucknow</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>All India</strong>States</div>
+					<div class="stat"><strong>30 Days</strong>Duration</div>
+					<div class="stat"><strong>Religious</strong>Type</div>
+				</div>
+				<p>
+					<strong>Special:</strong> Fast from dawn to sunset, Iftar
+					meals.
+				</p>
+			</div>
+			<div class="fest" id="onam">
+				<img src="Onam.jpg" alt="Onam" />
+				<h2>🌸 Onam</h2>
+				<p>
+					<strong>About:</strong> Harvest festival of Kerala linked to
+					King Mahabali.
+				</p>
+				<div class="religions">
+					<span class="religion">Malayali Culture</span>
+				</div>
+				<div class="states">
+					<span class="state">Kerala</span
+					><span class="state">Tamil Nadu</span
+					><span class="state">Karnataka</span>
+				</div>
+				<div class="stat-box">
+					<div class="stat"><strong>Mainly Kerala</strong>States</div>
+					<div class="stat"><strong>10 Days</strong>Duration</div>
+					<div class="stat"><strong>Harvest</strong>Type</div>
+				</div>
+				<p>
+					<strong>Special:</strong> Pookalam, Onam Sadya, boat races.
+				</p>
+			</div>
+		</div>
+
+		<footer>
+			<p>Festivals 🇮🇳 India — Celebrating Unity 🇮🇳 Diversity</p>
+		</footer>
+
+		<script>
+			function showfestival(id) {
+				const el = document.getElementById(id);
+				if (el) {
+					el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+					el.style.transform = 'scale(1.05)';
+					el.style.boxShadow = '0 15px 30px rgba(222,45,254,0.4)';
+					setTimeout(() => {
+						el.style.transform = '';
+						el.style.boxShadow = '';
+					}, 800);
+				}
+			}
+		</script>
+	</body>
+</html>
++
